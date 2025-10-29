@@ -1,32 +1,42 @@
-# Загрузка работ на git.dozen.mephi.ru
-Все работы необходимо загрузить на git.dozen.mephi.ru.
+# Lab Work №2: Class template devector.
 
-Для допуска к экзамену ВСЕ сданные вами работы должны быть загружены.
+> Special variant
 
-Выгрузка работ будет проводиться программой, поэтому необходимо строго соблюдать следующий шаблон:
-- внутри репозитория каталоги называются по номеру работы (1, 2, 3);
-- исходный код доп. задания "прикладная программа" по ЛР 2 загружать в каталог 2ex;
-- исходный код доп. задания "плагин" по ЛР 3 загружать в каталог 3ex;
-- внутри каждой из директорий должен лежать код только соответствующей работы;
-- если какой-то из работ нету, то каталог с этой работой не создавайте (или оставьте пустой);
-- внутри каталогов с работами допускается наличие поддиректорий;
-- все файлы исходного кода должны иметь расширение .c .h .cpp .hpp .tcc .cc .c++ или .cxx;
-- вместе с файлами исходного кода допускается наличие прочих файлов (исходные данные, рисунки, файлы автосборки), которые имеют расширение строго НЕ из списка, приведенного выше; эти файлы не будут участвовать в проверке на плагиат;
-- в репозитории должны отсутствовать большие файлы (размер одной ЛР не должен превышать 10MB);
-- в репозитории должны отсутствовать чужие исходные коды (если пользуетесь CMake, ОБЯЗАТЕЛЬНО удаляйте директорию cmake-build-debug, так как в ней есть свои исходники);
-- для продвинутых: допускается использование сабмодулей для аггрегации кода в одном репозитории или из сторонних систем контроля версий.
+## Description:
 
-Внимание!!! Для самостоятельной проверки правильности загрузки работы рекоммендуется использовать следующую команду на сервере samos.dozen.mephi.ru:
+A vector-like sequence container providing front and back operations (e.g: push_front/pop_front/push_back/pop_back) with amortized constant complexity and unsafe methods geared towards additional performance.
+
+Models the SequenceContainer, ReversibleContainer, and AllocatorAwareContainer concepts.
+
+## How to install and run a project:
+1. Clone the project repository:
 ```bash
-check_oop_labs.sh <Путь к каталогу репозитория>
-```
-Например:
-```bash
-check_oop_labs.sh ~/oop2024
+git clone https://git.dozen.mephi.ru/oop2025/s24501_chesnokov.an.git
 ```
 
-Шаблон для репозитория: https://git.dozen.mephi.ru/oop2024/oop2024_template, его можно скопировать или использовать в качестве шаблона чтобы точно не ошибиться.
+2. Compile the project:
+```bash
+cd s24501_chesnokov.an/2/
+mkdir build
+cd build
+cmake ..  // This command will generate makefiles for each target in our project inside the build folder.
+          // The project itself is located one folder higher.
+make Tests     // Compiles the Tests program
+```
 
-Любые отклонения от шаблона эквивалентны отсутствию работы. Ошибочная загрузка не той работы также эквивалентна её отсутствию.
+3. Run:
+```bash
+./build/Tests/Tests  // Runs the Tests program
+```
 
-Перечень работ (названия директорий): 1, 2, 2ex, 3, 3ex.
+4. Generate a coverage report:
+```bash
+gcovr -r . -f ".*Devector\.hpp" --html-details coverage.html
+```
+
+<!-- 
+4. Generate documentation:
+```bash
+doxygen Doxyfile
+```
+To view the documentation, open the file `docs/html/index.html`. -->
